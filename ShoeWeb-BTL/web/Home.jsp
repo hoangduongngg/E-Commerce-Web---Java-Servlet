@@ -22,7 +22,7 @@
         <!--begin of menu-->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="home">Shoes</a>
+                <a class="navbar-brand" href="home">Shoes Web</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -32,9 +32,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Manager Account</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Hello Alias</a>
-                        </li>
+<!--                        <li class="nav-item">
+                            <a class="nav-link" href="#">Hello </a>
+                        </li>-->
                         <li class="nav-item">
                             <a class="nav-link" href="#">Logout</a>
                         </li>
@@ -54,25 +54,28 @@
                         </div>
                         <a class="btn btn-success btn-sm ml-3" href="show">
                             <i class="fa fa-shopping-cart"></i> Cart
-                            <span class="badge badge-light">3</span>
+                            <span class="badge badge-light">0</span>
                         </a>
                     </form>
                 </div>
             </div>
         </nav>
+        
+        <!--Hello-->
         <section class="jumbotron text-center">
             <div class="container">
-                <h1 class="jumbotron-heading">Siêu thị giày chất lượng cao</h1>
-                <p class="lead text-muted mb-0">Uy tín tạo nên thương hiệu với hơn 10 năm cung cấp các sản phầm giày nhập từ Trung Quốc</p>
+                <h1 class="jumbotron-heading">Shoe Web</h1>
+                <p class="lead text-muted mb-0">Hello!</p>
             </div>
         </section>
+        
         <!--end of menu-->
         <div class="container">
             <div class="row">
                 <div class="col">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="Home.jsp">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/ShoeWeb-BTL/home">Home</a></li>
                             <li class="breadcrumb-item"><a href="#">Category</a></li>
                             <li class="breadcrumb-item active" aria-current="#">Sub-category</li>
                         </ol>
@@ -80,9 +83,12 @@
                 </div>
             </div>
         </div>
+        
+        
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
+                    <!--Category List-->
                     <div class="card bg-light mb-3">
                         <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                         <ul class="list-group category_block">
@@ -92,6 +98,8 @@
 
                         </ul>
                     </div>
+                    
+                    <!--Last Product-->
                     <div class="card bg-light mb-3">
                         <div class="card-header bg-success text-white text-uppercase">Last product</div>
                         <div class="card-body">
@@ -103,6 +111,7 @@
                     </div>
                 </div>
 
+                <!--Product List-->
                 <div class="col-sm-9">
                     <div class="row">
                         <c:forEach items="${listP}" var="o">
@@ -138,7 +147,7 @@
                         <h5>About</h5>
                         <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                         <p class="mb-0">
-                            Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+                            Web bán giày bài tập lớn môn Lập trình Web
                         </p>
                     </div>
 
@@ -146,39 +155,28 @@
                         <h5>Informations</h5>
                         <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                         <ul class="list-unstyled">
-                            <li><a href="">Link 1</a></li>
-                            <li><a href="">Link 2</a></li>
-                            <li><a href="">Link 3</a></li>
-                            <li><a href="">Link 4</a></li>
+                            <li><a href="https://www.facebook.com/hoangduongngg">FaceBook</a></li>
+                            <li><a type="https://www.instagram.com/hoangduongngg" href="">Instagram</a></li>
+                            <li><a href="https://github.com/hoangduongngg">Github</a></li>
+                            <li><a href="https://www.behance.net/hoangduongnguyen">Behance</a></li>
                         </ul>
                     </div>
 
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
-                        <h5>Others links</h5>
-                        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                        <ul class="list-unstyled">
-                            <li><a href="">Link 1</a></li>
-                            <li><a href="">Link 2</a></li>
-                            <li><a href="">Link 3</a></li>
-                            <li><a href="">Link 4</a></li>
-                        </ul>
-                    </div>
 
                     <div class="col-md-4 col-lg-3 col-xl-3">
                         <h5>Contact</h5>
                         <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                         <ul class="list-unstyled">
-                            <li><i class="fa fa-home mr-2"></i> My company</li>
-                            <li><i class="fa fa-envelope mr-2"></i> email@example.com</li>
-                            <li><i class="fa fa-phone mr-2"></i> + 33 12 14 15 16</li>
-                            <li><i class="fa fa-print mr-2"></i> + 33 12 14 15 16</li>
+                            <li><i class="fa fa-home mr-2"></i> Shoe Web</li>
+                            <li><i class="fa fa-envelope mr-2"></i>hoangduong@gmail.com</li>
+                            <li><i class="fa fa-phone mr-2"></i>0123456789</li>
+                            <li><i class="fa fa-print mr-2"></i>0123456789</li>
                         </ul>
                     </div>
                     <div class="col-12 copyright mt-3">
                         <p class="float-left">
                             <a href="#">Back to top</a>
                         </p>
-                        <p class="text-right text-muted">created with <i class="fa fa-heart"></i> by <a href="https://t-php.fr/43-theme-ecommerce-bootstrap-4.html"><i>t-php</i></a> | <span>v. 1.0</span></p>
                     </div>
                 </div>
             </div>
