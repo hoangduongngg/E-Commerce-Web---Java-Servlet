@@ -8,7 +8,8 @@ package control;
  *
  * @author hoangduongngg
  */
-import dao.DAO;
+import dao.CategoryDAO;
+import dao.ProductDAO;
 import entity.Category;
 import entity.Product;
 import java.io.IOException;
@@ -34,10 +35,14 @@ public class HomeControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         //b1: get data from dao
-        DAO dao = new DAO();
-        List<Product> list = dao.getAllProduct();
-        List<Category> listC = dao.getAllCategory();
-        Product last = dao.getLast();
+        ProductDAO productDAO = new ProductDAO();
+        List<Product> list = productDAO.getAllProduct();
+        
+        CategoryDAO categoryDAO = new CategoryDAO();
+        List<Category> listC = categoryDAO.getAllCategory();
+        
+        
+        Product last = productDAO.getLast();
         
         //b2: set data to jsp
         request.setAttribute("listP", list);

@@ -29,7 +29,7 @@
                 
                 <input name="user"  type="text" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
                 <input name="pass"  type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-                <p class="text-danger">${messWrong} </p>
+                <p class="text-danger">${mess} </p>
                 
                 <div class="form-group form-check">
                     <input name="remember" value="1" type="checkbox" class="form-check-input" id="exampleCheck1">

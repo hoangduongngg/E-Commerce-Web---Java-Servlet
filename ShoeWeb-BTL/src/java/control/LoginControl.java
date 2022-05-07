@@ -4,10 +4,9 @@
  */
 package control;
 
-import dao.DAO;
+import dao.UserDAO;
 import entity.Account;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,13 +24,13 @@ public class LoginControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String username = request.getParameter("user");
-        String password = request.getParameter("pass");
-        DAO dao = new DAO();
-        Account a = dao.login(username, password);
+        String user = request.getParameter("user");
+        String pass = request.getParameter("pass");
+        UserDAO dao = new UserDAO();
+        Account a = dao.checkLogin(user, pass);
         //Neu login fall thi login lai
         if (a == null) {
-            request.setAttribute("messWrong", "Wrong user or password");
+            request.setAttribute("mess", "Wrong user or password");
             request.getRequestDispatcher("Login.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("home").forward(request, response);
