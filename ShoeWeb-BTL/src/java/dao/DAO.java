@@ -59,8 +59,10 @@ public class DAO {
     }
 
     public Product getLast() {
-        String query = "select top 1 * from product\n"
-                + "order by id desc";
+        //san pham moi nhat: co ID cao nhat
+        String query = "select * from product\n"
+                + "order by id desc\n"
+                + "limit 1";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -77,15 +79,16 @@ public class DAO {
         }
         return null;
     }
-
-    public static void main(String[] args) {
-        DAO dao = new DAO();
-        List<Product> list = dao.getAllProduct();
-        List<Category> listC = dao.getAllCategory();
-
-        for (Category o : listC) {
-            System.out.println(o);
-        }
-    }
+    
+//    Test
+//    public static void main(String[] args) {
+//        DAO dao = new DAO();
+//        List<Product> list = dao.getAllProduct();
+//        List<Category> listC = dao.getAllCategory();
+//
+//        for (Category o : listC) {
+//            System.out.println(o);
+//        }
+//    }
 
 }
