@@ -9,7 +9,7 @@ DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
 
 CREATE TABLE `shoeweb`.`account` (
-  `uID` INT NOT NULL,
+  `uID` INT AUTO_INCREMENT NOT NULL,
   `user` VARCHAR(255) NOT NULL,
   `pass` VARCHAR(45) NOT NULL,
   `isSell` INT NULL,
@@ -29,7 +29,7 @@ DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
   
   CREATE TABLE `shoeweb`.`product` (
-  `id` INT NOT NULL,
+  `id` INT AUTO_INCREMENT NOT NULL,
   `name` VARCHAR(1000) NULL,
   `image` VARCHAR(5000) NULL,
   `price` DOUBLE NULL,
