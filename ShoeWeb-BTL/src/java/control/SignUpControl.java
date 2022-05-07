@@ -17,25 +17,36 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author hoangduongngg
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "SignupControl", urlPatterns = {"/signup"})
+public class SignUpControl extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         String user = request.getParameter("user");
         String pass = request.getParameter("pass");
-        AccountDAO dao = new AccountDAO();
-        Account a = dao.checkLogin(user, pass);
-        //Neu login fall thi login lai
-        if (a == null) {
-            request.setAttribute("mess", "Wrong user or password");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("home").forward(request, response);
-        }
+        String rePass = request.getParameter("repass");
         
+        //Kiem tra pass & RePass
+        if (!pass.equals(rePass)) {
+            request.setAttribute("mess", "Mat khau khong trung nhau");
+            request.getRequestDispatcher("SignUp.jsp").forward(request, response);
+        } else {
+            AccountDAO accountDAO = new AccountDAO();
+            Account a = accountDAO.checkAccountExist(user);
+            if (a == null) {
+                //Chua co Account, duoc SignUp
+                accountDAO.signUp(user, pass);
+                request.setAttribute("mess", "Dang ky thanh cong");
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
+            } else {
+                //Da co Account, thong bao da ton tai
+                request.setAttribute("mess", "Tai khoan da ton tai");
+                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
+            }
+            
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
