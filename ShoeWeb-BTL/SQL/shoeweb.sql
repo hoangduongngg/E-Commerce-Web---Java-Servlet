@@ -32,7 +32,7 @@ COLLATE = utf8_bin;
   `id` INT NOT NULL,
   `name` VARCHAR(1000) NULL,
   `image` VARCHAR(5000) NULL,
-  `price` VARCHAR(1000) NULL,
+  `price` DOUBLE NULL,
   `title` VARCHAR(1000) NULL,
   `description` VARCHAR(5000) NULL,
   `cateID` INT NULL,
