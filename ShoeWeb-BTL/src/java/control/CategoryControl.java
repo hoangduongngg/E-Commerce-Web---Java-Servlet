@@ -1,13 +1,9 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package control;
 
-/**
- *
- * @author hoangduongngg
- */
 import dao.CategoryDAO;
 import dao.ProductDAO;
 import entity.Category;
@@ -19,37 +15,36 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet(name = "HomeControl", urlPatterns = {"/home"})
-public class HomeControl extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+/**
+ *
+ * @author hoangduongngg
+ */
+@WebServlet(name = "CategoryControl", urlPatterns = {"/category"})
+public class CategoryControl extends HttpServlet {
+
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //b1: get data from dao
         ProductDAO productDAO = new ProductDAO();
-        List<Product> list = productDAO.getAllProduct();
         
+        //Get list Product theo Category
+        String  cateID = request.getParameter("cid");
+        List<Product> list = productDAO.getProductbyCategory(cateID);
+        
+        //Get list Category
         CategoryDAO categoryDAO = new CategoryDAO();
         List<Category> listC = categoryDAO.getAllCategory();
         
+        //Get last Product
         Product last = productDAO.getLast();
         
-        //b2: set data to jsp
         request.setAttribute("listP", list);
         request.setAttribute("listC", listC);
-        request.setAttribute("lastp", last);
+        request.setAttribute("p", last);
+        request.setAttribute("cateTag", cateID);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
-        //404 -> url
-        //500 -> jsp properties
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
