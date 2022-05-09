@@ -29,18 +29,32 @@
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
                     <ul class="navbar-nav m-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Manager Account</a>
-                        </li>
-<!--                        <li class="nav-item">
-                            <a class="nav-link" href="#">Hello </a>
-                        </li>-->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Login.jsp">Login</a>
-                        </li>
+                        <c:if test="${sessionScope.account.isSell == 1}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Seller Manager</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${sessionScope.account.isAdmin == 1}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Admin Manager</a>
+                            </li>
+                        </c:if>
+                        
+                        <!--Neu dang dang nhap thi hien Logout va Ten User-->
+                        <c:if test="${sessionScope.account != null}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="logout">Logout</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="home">Hello ${sessionScope.account.user} </a>
+                            </li>-->
+                        </c:if>
+                        <!--Neu chua dang nhap thi hien Login-->
+                        <c:if test="${sessionScope.account == null}">
+                            <li class="nav-item">
+                               <a class="nav-link" href="Login.jsp">Login</a>
+                            </li>
+                        </c:if>
                     </ul>
 
                     <form action="search" method="post" class="form-inline my-2 my-lg-0">
@@ -64,8 +78,8 @@
         <!--Hello-->
         <section class="jumbotron text-center">
             <div class="container">
-                <h1 class="jumbotron-heading">Shoe Web</h1>
-                <p class="lead text-muted mb-0">Hello!</p>
+                <h1 class="jumbotron-heading">Save Up to 40%</h1>
+                <p class="lead text-muted mb-0">Shop All Our New Markdowns!</p>
             </div>
         </section>
         
