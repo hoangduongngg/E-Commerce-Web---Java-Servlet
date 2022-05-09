@@ -1,4 +1,20 @@
-<!--begin of menu-->
+<%-- 
+    Document   : Menu
+    Created on : May 9, 2022, 4:15:09 PM
+    Author     : hoangduongngg
+--%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <!--Menu-->    
+        <!--begin of menu-->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="home">Shoes Web</a>
@@ -61,4 +77,5 @@
                 <p class="lead text-muted mb-0">Shop All Our New Markdowns!</p>
             </div>
         </section>
-        
+    </body>
+</html>
