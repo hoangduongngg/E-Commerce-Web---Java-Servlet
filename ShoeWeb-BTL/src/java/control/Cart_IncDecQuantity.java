@@ -6,51 +6,60 @@ package control;
 
 import entity.Cart;
 import entity.Item;
-import entity.Product;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author hoangduongngg
  */
-@WebServlet(name = "CartControl", urlPatterns = {"/cart"})
-public class CartControl extends HttpServlet {
+@WebServlet(name = "Cart_IncDecQuantity", urlPatterns = {"/cartIncDecQuantity"})
+public class Cart_IncDecQuantity extends HttpServlet {
 
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        Cart cart = (Cart) session.getAttribute("cart");
-        if (cart == null) {
-            request.setAttribute("mess", "Cart is empty");
-        }
-        else {
+        
+        
+        if (request.getParameter("action") != null) {
+            String action = request.getParameter("action");
+            int quantityChange = 0;
+            if (action.equals("inc")) {
+                quantityChange = 1;
+            } 
+            else if (action.equals("dec")){
+                quantityChange = -1;
+            }
+            
+            
+            int productID = Integer.parseInt(request.getParameter("ProductID"));
+            Cart cart = (Cart) request.getSession().getAttribute("cart");
+            if (cart == null) {
+                request.setAttribute("mess", "Cart is empty");
+                request.getRequestDispatcher("Cart.jsp").forward(request, response);
+            }
             List<Item> items = cart.getItems();
-            request.setAttribute("listItem", items);
+            
+            for (Item item: items) {
+                if (item.getProduct().getId() == productID) {
+//                    Tang hoac giam Quantiy
+                    item.setQuantity(item.getQuantity() + quantityChange);
+                    if (action.equals("Delete") || item.getQuantity() == 0) {
+                        items.remove(item);
+                    }
+                    break;
+                }
+            }
+            
         }
         
-//        int quatityChange = 0;
-//        if (request.getParameter("quatityChange") != null) {
-//            quatityChange = Integer.parseInt(request.getParameter("quatityChange"));
-//            List<Item> items = cart.getItems();
-//            for (Item item: items) {
-//                if (item.getProduct().getId() == Integer.parseInt(request.getParameter("ProductID"))) {
-//                    item.setQuantity(item.getQuantity() + quatityChange);
-//                    break;
-//                }
-//            }
-//            request.setAttribute("quatityChange", quatityChange);
-//        }
-
-        request.getRequestDispatcher("Cart.jsp").forward(request, response);
+        request.getRequestDispatcher("cart").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

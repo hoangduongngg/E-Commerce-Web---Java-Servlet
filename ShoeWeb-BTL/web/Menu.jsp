@@ -65,7 +65,7 @@
                         <!--Cart-->
                         <a class="btn btn-success btn-sm ml-3" href="cart">
                             <i class="fa fa-shopping-cart"></i> Cart
-                            <span class="badge badge-light">0</span>
+                            <!--<span class="badge badge-light">0</span>-->
                         </a>
                     </form>
                 </div>
