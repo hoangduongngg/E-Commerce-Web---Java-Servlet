@@ -31,7 +31,7 @@
                         </c:if>
                         <c:if test="${sessionScope.account.isAdmin == 1}">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Admin Manager</a>
+                                <a class="nav-link" href="manager">Admin Manager</a>
                             </li>
                         </c:if>
                         
