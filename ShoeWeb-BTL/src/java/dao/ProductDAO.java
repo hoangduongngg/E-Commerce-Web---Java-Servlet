@@ -31,7 +31,7 @@ public class ProductDAO extends DAO{
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getDouble(4),
+                        rs.getFloat(4),
                         rs.getString(5),
                         rs.getString(6)));
             }
@@ -54,7 +54,7 @@ public class ProductDAO extends DAO{
                 return new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getDouble(4),
+                        rs.getFloat(4),
                         rs.getString(5),
                         rs.getString(6));
             }
@@ -80,7 +80,7 @@ public class ProductDAO extends DAO{
                 list.add( new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getDouble(4),
+                        rs.getFloat(4),
                         rs.getString(5),
                         rs.getString(6)));
             }
@@ -107,7 +107,7 @@ public class ProductDAO extends DAO{
                 list.add( new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getDouble(4),
+                        rs.getFloat(4),
                         rs.getString(5),
                         rs.getString(6)));
             }
@@ -144,7 +144,7 @@ public class ProductDAO extends DAO{
                 return new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getDouble(4),
+                        rs.getFloat(4),
                         rs.getString(5),
                         rs.getString(6));
             }
