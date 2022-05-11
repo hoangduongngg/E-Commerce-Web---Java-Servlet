@@ -14,6 +14,9 @@ import java.util.List;
  * @author hoangduongngg
  */
 public class ProductDAO extends DAO{
+
+    public ProductDAO() {
+    }
     
     
     // Lay ra tat ca san pham

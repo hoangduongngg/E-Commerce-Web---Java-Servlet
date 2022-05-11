@@ -14,6 +14,11 @@ import java.util.List;
  * @author hoangduongngg
  */
 public class CategoryDAO extends DAO{
+
+    public CategoryDAO() {
+    }
+    
+    
     // Lay ra tat ca danh muc
     public List<Category> getAllCategory() {
         List<Category> list = new ArrayList<>();

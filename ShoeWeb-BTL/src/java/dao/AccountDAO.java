@@ -12,6 +12,11 @@ import entity.Account;
  * @author hoangduongngg
  */
 public class AccountDAO extends DAO{
+
+    public AccountDAO() {
+    }
+    
+    
     //Kiem tra dang nhap
     public Account checkLogin(String user, String pass) {
         String query = "select * from account\n" +
