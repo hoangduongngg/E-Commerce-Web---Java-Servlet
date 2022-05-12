@@ -118,3 +118,12 @@ CHANGE COLUMN `accountID` `accountID` INT NOT NULL ;
 
 ALTER TABLE `shoeweb`.`product` 
 CHANGE COLUMN `price` `price` DOUBLE NULL DEFAULT NULL ;
+
+ALTER TABLE `shoeweb`.`order` 
+CHANGE COLUMN `orderDate` `orderDate` VARCHAR(255) NOT NULL ;
+
+ALTER TABLE `shoeweb`.`orderdetail` 
+DROP COLUMN `itemID`,
+ADD COLUMN `productID` INT NOT NULL AFTER `orderID`,
+ADD COLUMN `quantity` INT NOT NULL AFTER `productID`,
+ADD COLUMN `price` DOUBLE NOT NULL AFTER `quantity`;

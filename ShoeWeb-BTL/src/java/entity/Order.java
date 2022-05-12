@@ -4,7 +4,6 @@
  */
 package entity;
 
-import java.util.Date;
 
 /**
  *
@@ -13,10 +12,19 @@ import java.util.Date;
 public class Order {
     private int id;
     private int accountID;
-    private Date orderDate;
+    private String orderDate;
 
     public Order() {
     }
+
+    public Order(int id, int accountID, String orderDate) {
+        this.id = id;
+        this.accountID = accountID;
+        this.orderDate = orderDate;
+    }
+
+    
+
 
     public int getId() {
         return id;
@@ -30,6 +38,9 @@ public class Order {
         return accountID;
     }
 
+ 
+
+
     
 
     public void setId(int id) {
@@ -38,11 +49,11 @@ public class Order {
 
     
 
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -51,7 +62,8 @@ public class Order {
         return "Order{" + "id=" + id + ", accountID=" + accountID + ", orderDate=" + orderDate + '}';
     }
 
-    
+  
 
     
+
 }

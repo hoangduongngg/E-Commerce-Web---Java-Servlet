@@ -4,10 +4,16 @@
  */
 package control;
 
+import dao.OrderDAO;
+import dao.OrderDetailDAO;
 import entity.Account;
 import entity.Cart;
 import entity.Item;
+import entity.Order;
+import entity.OrderDetail;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,33 +26,51 @@ import javax.servlet.http.HttpSession;
  *
  * @author hoangduongngg
  */
-@WebServlet(name = "PaymentControl", urlPatterns = {"/payment"})
-public class PaymentControl extends HttpServlet {
+@WebServlet(name = "BuyControl", urlPatterns = {"/buy"})
+public class BuyControl extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("account");
         Cart cart = (Cart) session.getAttribute("cart");
-        if (cart == null) {
-            request.setAttribute("mess", "Cart is empty");
+        if (account == null) {
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+        }
+        else if (cart == null) {
+            request.getRequestDispatcher("cart").forward(request, response);
         }
         else {
-            List<Item> items = cart.getItems();
-            request.setAttribute("listItem", items);
-            double totalPrice = 0;
+//                Add Order to Database
+                Order order = new Order();
+                order.setAccountID(account.getId());
+                
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+                String timeNow = LocalDateTime.now().toString();  
+                order.setOrderDate(timeNow);
+//                order.setTotalPayment(request.getAttribute("totalPayment"));
+                OrderDAO orderDAO = new OrderDAO();
+                orderDAO.addOrder(order);   
+                
+//                Add OrderDetail to Database
+            List <Item> items = cart.getItems();
             for (Item item: items) {
-                totalPrice += item.getPrice() * item.getQuantity();
+                OrderDetail orderDetail = new OrderDetail();
+                
+                orderDetail.setPrice(item.getPrice());
+                orderDetail.setProductID(item.getProduct().getId());
+                orderDetail.setQuantity(item.getQuantity());
+                orderDetail.setOrderID(orderDAO.getOrderbyDate(timeNow).getId());
+
+                OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+                orderDetailDAO.addOrderDetail(orderDetail);
             }
-            double VATPrice =  totalPrice *8/100;
-            double totalPayment = totalPrice + VATPrice;
             
-            request.setAttribute("totalPrice", totalPrice);
-            request.setAttribute("VATPrice", VATPrice);
-            request.setAttribute("totalPayment", totalPayment);
+            session.removeAttribute("cart");
+            request.getRequestDispatcher("ConfirmBuy.jsp").forward(request, response);
         }
-         
-        request.getRequestDispatcher("Payment.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

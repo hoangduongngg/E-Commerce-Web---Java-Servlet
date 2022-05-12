@@ -8,10 +8,19 @@ package entity;
  *
  * @author hoangduongngg
  */
-public class OrderDetail {
+public class OrderDetail extends Item{
     private int id;
-    private int itemID;
     private int orderID;
+    private int productID;
+
+    public int getProductID() {
+        return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+    
 
     public OrderDetail() {
     }
@@ -20,9 +29,7 @@ public class OrderDetail {
         return id;
     }
 
-    public int getItemID() {
-        return itemID;
-    }
+   
 
     public int getOrderID() {
         return orderID;
@@ -34,9 +41,7 @@ public class OrderDetail {
         this.id = id;
     }
 
-    public void setItemID(int itemID) {
-        this.itemID = itemID;
-    }
+    
 
     public void setOrderID(int orderID) {
         this.orderID = orderID;
@@ -44,7 +49,7 @@ public class OrderDetail {
 
     @Override
     public String toString() {
-        return "OrderDetail{" + "id=" + id + ", itemID=" + itemID + ", orderID=" + orderID + '}';
+        return "OrderDetail{" + "id=" + id + ", orderID=" + orderID + '}';
     }
 
     

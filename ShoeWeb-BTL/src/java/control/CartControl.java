@@ -6,9 +6,7 @@ package control;
 
 import entity.Cart;
 import entity.Item;
-import entity.Product;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,19 +34,6 @@ public class CartControl extends HttpServlet {
             List<Item> items = cart.getItems();
             request.setAttribute("listItem", items);
         }
-        
-//        int quatityChange = 0;
-//        if (request.getParameter("quatityChange") != null) {
-//            quatityChange = Integer.parseInt(request.getParameter("quatityChange"));
-//            List<Item> items = cart.getItems();
-//            for (Item item: items) {
-//                if (item.getProduct().getId() == Integer.parseInt(request.getParameter("ProductID"))) {
-//                    item.setQuantity(item.getQuantity() + quatityChange);
-//                    break;
-//                }
-//            }
-//            request.setAttribute("quatityChange", quatityChange);
-//        }
 
         request.getRequestDispatcher("Cart.jsp").forward(request, response);
     }

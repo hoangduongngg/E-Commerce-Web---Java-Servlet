@@ -19,7 +19,7 @@ public class Item {
 
 
     public int getId() {
-        return id;
+        return product.getId();
     }
 
     public Product getProduct() {

@@ -93,25 +93,25 @@
                             </div>-->
 
                             <!--Customer-->
-                            <div class="col-lg-6">
-                                <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Information</div>
-                                <div class="p-4">
-                                    <div class="input-group mb-4 border rounded-pill p-2">
-                                        <input value="${sessionScope.account.name}" type="text" placeholder="Your name" aria-describedby="button-addon3" class="form-control border-0">
-                                        
-<!--                                        <div class="input-group-append border-0">
-                                            <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Sử dụng</button>
-                                        </div>-->
-                                    </div>
-                                    <div class="input-group mb-4 border rounded-pill p-2">
-                                        <input value="${sessionScope.account.phone}" type="text" placeholder="Your phone" aria-describedby="button-addon3" class="form-control border-0">
-                                    </div>
-                                    <div class="input-group mb-4 border rounded-pill p-2">
-                                        <input value="${sessionScope.account.address}" type="text" placeholder="Your Address" aria-describedby="button-addon3" class="form-control border-0">
-                                    </div>
-                                    
+                            <c:if test="${sessionScope.account != null}">
+                                <div class="col-lg-6">
+                                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Information</div>
+                                    <form action="getinfo" class="p-4">
+                                        <div class="input-group mb-4 border rounded-pill p-2">
+                                            <input value="${sessionScope.account.name}" type="text" placeholder="Your name" aria-describedby="button-addon3" class="form-control border-0">
+                                        </div>
+                                        <div class="input-group mb-4 border rounded-pill p-2">
+                                            <input value="${sessionScope.account.phone}" type="text" placeholder="Your phone" aria-describedby="button-addon3" class="form-control border-0">
+                                        </div>
+                                        <div class="input-group mb-4 border rounded-pill p-2">
+                                            <input value="${sessionScope.account.address}" type="text" placeholder="Your Address" aria-describedby="button-addon3" class="form-control border-0">
+                                        </div>
+
+                                    </form>
                                 </div>
-                            </div>
+                            </c:if>
+                            
+                            
                             <div class="col-lg-6">
                                 <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thành tiền</div>
                                 <div class="p-4">
@@ -122,7 +122,7 @@
                                         <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng thanh toán</strong>
                                             <h5 class="font-weight-bold">${totalPayment}$</h5>
                                         </li>
-                                    </ul><a href="buy" class="btn btn-dark rounded-pill py-2 btn-block">Mua hàng</a>
+                                    </ul><a href="buy" class="btn btn-dark rounded-pill py-2 btn-block">Confirm</a>
                                 </div>
                             </div>
                         </div>
