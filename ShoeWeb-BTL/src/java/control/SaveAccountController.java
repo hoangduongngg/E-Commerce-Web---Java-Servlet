@@ -48,7 +48,11 @@ public class SaveAccountController extends HttpServlet {
 	    String password = request.getParameter("password");
 	    String isAdmin = request.getParameter("isAdmin");
 	    String isSell = request.getParameter("isSell");
-
+            String name = "";
+            String address = "";
+            String phone = "";
+            
+            
 	    //validate data:
 	    String message = "";
 	    String emptyuserNameMessage = "";
@@ -68,6 +72,9 @@ public class SaveAccountController extends HttpServlet {
                 account.setPass(password);
                 account.setIsAdmin(Integer.parseInt(isAdmin));
                 account.setIsSell(Integer.parseInt(isSell));
+                account.setName(name);
+                account.setAddress(address);
+                account.setPhone(phone);
 
                 request.setAttribute("account", account);
                 request.setAttribute("action", request.getParameter("action"));

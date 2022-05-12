@@ -137,3 +137,23 @@ CHANGE COLUMN `title` `title` VARCHAR(1000) NOT NULL ,
 CHANGE COLUMN `description` `description` VARCHAR(5000) NOT NULL ,
 CHANGE COLUMN `cateID` `cateID` INT NOT NULL ,
 CHANGE COLUMN `sell_ID` `sell_ID` INT NOT NULL ;
+
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '1');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '2');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '3');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '4');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '5');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '6');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '7');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '8');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '9');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '10');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '11');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '12');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '13');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '14');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '15');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '16');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '17');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '18');
+UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '19');

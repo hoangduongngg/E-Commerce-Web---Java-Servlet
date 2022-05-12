@@ -42,7 +42,15 @@ public class SignUpControl extends HttpServlet {
             Account a = accountDAO.checkAccountExist(user);
             if (a == null) {
                 //Chua co Account, duoc SignUp
-                accountDAO.signUp(user, pass, name, address, phone);
+                Account account = new Account();
+                account.setUser(user);
+                account.setPass(pass);
+                account.setIsAdmin(0);
+                account.setIsSell(0);
+                account.setName(name);
+                account.setAddress(address);
+                account.setPhone(phone);
+                accountDAO.signUp(account);
                 request.setAttribute("mess", "Dang ky thanh cong");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
             } else {
