@@ -115,3 +115,6 @@ CHANGE COLUMN `orderID` `orderID` INT NOT NULL ;
 
 ALTER TABLE `shoeweb`.`order` 
 CHANGE COLUMN `accountID` `accountID` INT NOT NULL ;
+
+ALTER TABLE `shoeweb`.`product` 
+CHANGE COLUMN `price` `price` DOUBLE NULL DEFAULT NULL ;

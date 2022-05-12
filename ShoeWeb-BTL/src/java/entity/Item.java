@@ -12,7 +12,7 @@ public class Item {
     private int id;
     private Product product;
     private int quantity;
-    private float price;
+    private double price;
 
     public Item() {
     }
@@ -30,7 +30,7 @@ public class Item {
         return quantity;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -46,7 +46,7 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
