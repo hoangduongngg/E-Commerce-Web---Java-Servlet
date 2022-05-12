@@ -33,7 +33,10 @@ public class AccountDAO extends DAO{
                         rs.getString(2),
                         rs.getString(3),
                         rs.getInt(4),
-                        rs.getInt(5)
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8)
                 );
             }
             
@@ -57,7 +60,10 @@ public class AccountDAO extends DAO{
                         rs.getString(2),
                         rs.getString(3),
                         rs.getInt(4),
-                        rs.getInt(5)
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8)
                 );
             }
             
@@ -67,14 +73,17 @@ public class AccountDAO extends DAO{
     }
     
     // Sign Up: Them Account moi vao Database
-    public void signUp (String user , String pass) {
-        String query = "insert into account (user, pass, isSell, isAdmin)\n" +
-                        "values (?, ?, 0, 0)"; //0,0 : not Seller, not Admin => Normal User
+    public void signUp (String user , String pass, String name, String address , String phone) {
+        String query = "insert into account (user, pass, isSell, isAdmin, name, address, phone)\n" +
+                        "values (?, ?, 0, 0, ?, ?, ?)"; //0,0 : not Seller, not Admin => Normal User
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
             ps.setString(1, user);
             ps.setString(2, pass);
+            ps.setString(3, name);
+            ps.setString(4, address);
+            ps.setString(5, phone);
 
 //            rs = ps.executeQuery(); Khi chay cau lech tren khong co result tra ve, chi Update
             ps.executeUpdate();

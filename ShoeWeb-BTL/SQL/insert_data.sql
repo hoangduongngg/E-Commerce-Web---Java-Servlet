@@ -99,3 +99,12 @@ UPDATE `shoeweb`.`product` SET `name` = 'Vapor 14', `image` = 'https://static.ni
 
 ALTER TABLE `shoeweb`.`product` 
 CHANGE COLUMN `price` `price` FLOAT NULL DEFAULT NULL ;
+
+ALTER TABLE `shoeweb`.`account` 
+ADD COLUMN `name` VARCHAR(255) NULL AFTER `isAdmin`,
+ADD COLUMN `address` VARCHAR(255) NULL AFTER `name`,
+ADD COLUMN `phone` VARCHAR(255) NULL AFTER `address`,
+CHANGE COLUMN `isSell` `isSell` INT NOT NULL ,
+CHANGE COLUMN `isAdmin` `isAdmin` INT NOT NULL ;
+UPDATE `shoeweb`.`account` SET `name` = 'Nguyen Hoang Duong', `address` = 'Bac Ninh, Viet Nam', `phone` = '0123456789' WHERE (`uID` = '3');
+UPDATE `shoeweb`.`account` SET `user` = 'hoangduongnguyen', `isSell` = '0', `name` = 'Nguyen Hoang Duong', `address` = 'Ha Dong, Ha Noi, Viet Nam', `phone` = '0123456789' WHERE (`uID` = '4');

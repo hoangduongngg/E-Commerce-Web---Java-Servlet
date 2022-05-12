@@ -27,6 +27,10 @@ public class SignUpControl extends HttpServlet {
         String pass = request.getParameter("pass");
         String rePass = request.getParameter("repass");
         
+        String name = request.getParameter("name");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+        
         //Kiem tra pass & RePass
         if (!pass.equals(rePass)) {
             request.setAttribute("mess", "Mat khau khong trung nhau");
@@ -36,7 +40,7 @@ public class SignUpControl extends HttpServlet {
             Account a = accountDAO.checkAccountExist(user);
             if (a == null) {
                 //Chua co Account, duoc SignUp
-                accountDAO.signUp(user, pass);
+                accountDAO.signUp(user, pass, name, address, phone);
                 request.setAttribute("mess", "Dang ky thanh cong");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
             } else {

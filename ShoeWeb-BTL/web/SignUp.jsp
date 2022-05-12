@@ -32,6 +32,12 @@
                 <input name="user" type="text" id="user-name" class="form-control" placeholder="User name" required="" autofocus="">
                 <input name="pass" type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
                 <input name="repass" type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="">
+                
+                <br>
+                <input name="name" type="text" id="name" class="form-control" placeholder="Your name" required autofocus="">
+                <input name="address" type="text" id="address" class="form-control" placeholder="Your address" required autofocus="">
+                <input name="phone" type="text" id="phone" class="form-control" placeholder="Your phone" required autofocus="">
+                
                 <p class="text-danger">${mess} </p>
 
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
