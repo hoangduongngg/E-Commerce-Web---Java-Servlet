@@ -25,6 +25,7 @@
     <body>
         <div>
             
+                <jsp:include page = "Navbar.jsp"></jsp:include>
 
             <!--Sign up-->
             <form action="signup" method="post" class="form-signup" id="logreg-forms">

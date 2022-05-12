@@ -16,7 +16,7 @@
     </head>
 
     <body>
-        <jsp:include page="Menu.jsp"></jsp:include>
+        <jsp:include page="Navbar.jsp"></jsp:include>
         
             <div class="shopping-cart">
                 <div class="px-4 px-lg-0">

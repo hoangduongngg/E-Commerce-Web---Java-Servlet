@@ -21,6 +21,8 @@
         <title>Login Form</title>
     </head>
     <body>
+                <jsp:include page = "Navbar.jsp"></jsp:include>
+
         <div id="logreg-forms">
             <!--Login-->
             <form class="form-signin" action="login" method="post">
