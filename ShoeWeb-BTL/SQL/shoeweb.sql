@@ -42,3 +42,21 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
 
+CREATE TABLE `shoeweb`.`order` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `accountID` VARCHAR(255) NOT NULL,
+  `orderDate` DATE NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+CREATE TABLE `shoeweb`.`orderdetail` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `itemID` VARCHAR(255) NOT NULL,
+  `orderID` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+

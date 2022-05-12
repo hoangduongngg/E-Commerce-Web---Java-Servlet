@@ -108,3 +108,10 @@ CHANGE COLUMN `isSell` `isSell` INT NOT NULL ,
 CHANGE COLUMN `isAdmin` `isAdmin` INT NOT NULL ;
 UPDATE `shoeweb`.`account` SET `name` = 'Nguyen Hoang Duong', `address` = 'Bac Ninh, Viet Nam', `phone` = '0123456789' WHERE (`uID` = '3');
 UPDATE `shoeweb`.`account` SET `user` = 'hoangduongnguyen', `isSell` = '0', `name` = 'Nguyen Hoang Duong', `address` = 'Ha Dong, Ha Noi, Viet Nam', `phone` = '0123456789' WHERE (`uID` = '4');
+
+ALTER TABLE `shoeweb`.`orderdetail` 
+CHANGE COLUMN `itemID` `itemID` INT NOT NULL ,
+CHANGE COLUMN `orderID` `orderID` INT NOT NULL ;
+
+ALTER TABLE `shoeweb`.`order` 
+CHANGE COLUMN `accountID` `accountID` INT NOT NULL ;
