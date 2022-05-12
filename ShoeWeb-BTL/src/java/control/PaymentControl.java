@@ -4,13 +4,17 @@
  */
 package control;
 
+import entity.Account;
+import entity.Cart;
+import entity.Item;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -22,6 +26,31 @@ public class PaymentControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("cart");
+        if (cart == null) {
+            request.setAttribute("mess", "Cart is empty");
+        }
+        else {
+            List<Item> items = cart.getItems();
+            request.setAttribute("listItem", items);
+            float totalPrice = 0;
+            for (Item item: items) {
+                totalPrice += item.getPrice() * item.getQuantity();
+            }
+            float VATPrice =  totalPrice *8/100;
+            float totalPayment = totalPrice + VATPrice;
+            
+            request.setAttribute("totalPrice", totalPrice);
+            request.setAttribute("VATPrice", VATPrice);
+            request.setAttribute("totalPayment", totalPayment);
+        }
+        
+//        Account account = (Account) session.getAttribute("account");
+//        if (account != null) {
+//            
+//        }
+        
         
         request.getRequestDispatcher("Payment.jsp").forward(request, response);
     }
