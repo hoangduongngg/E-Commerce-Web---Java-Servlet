@@ -20,7 +20,7 @@ public class CategoryDAO extends DAO{
     
     
     // Lay ra tat ca danh muc
-    public List<Category> getAllCategory() {
+    public List<Category> getAllCategory()  {
         List<Category> list = new ArrayList<>();
         String query = "select * from Category";
         try {

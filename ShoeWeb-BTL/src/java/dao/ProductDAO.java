@@ -28,12 +28,17 @@ public class ProductDAO extends DAO{
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Product(rs.getInt(1),
+                list.add(new Product(
+                        rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getFloat(4),
+                        rs.getDouble(4),
                         rs.getString(5),
-                        rs.getString(6)));
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9))
+                );                       
             }
         } catch (Exception e) {
         }
@@ -51,12 +56,16 @@ public class ProductDAO extends DAO{
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while(rs.next()){
-                return new Product(rs.getInt(1),
+                return new Product(
+                        rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getFloat(4),
+                        rs.getDouble(4),
                         rs.getString(5),
-                        rs.getString(6));
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9));
             }
         } catch (Exception e) {
         }
@@ -77,12 +86,16 @@ public class ProductDAO extends DAO{
             ps.setString(1, cid);
             rs = ps.executeQuery();
             while(rs.next()){
-                list.add( new Product(rs.getInt(1),
+                list.add( new Product(
+                        rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getFloat(4),
+                        rs.getDouble(4),
                         rs.getString(5),
-                        rs.getString(6)));
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9)));
             }
             return list;
         } catch (Exception e) {
@@ -104,12 +117,16 @@ public class ProductDAO extends DAO{
             ps.setString(1, "%" + keyword + "%");
             rs = ps.executeQuery();
             while(rs.next()){
-                list.add( new Product(rs.getInt(1),
+                list.add( new Product (
+                        rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getFloat(4),
+                        rs.getDouble(4),
                         rs.getString(5),
-                        rs.getString(6)));
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9)));
             }
             
 //            //Theo keyword = Keyword
@@ -141,12 +158,16 @@ public class ProductDAO extends DAO{
             ps.setString(1, id);
             rs = ps.executeQuery();
             while(rs.next()){
-                return new Product(rs.getInt(1),
+                return new Product(
+                        rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getFloat(4),
+                        rs.getDouble(4),
                         rs.getString(5),
-                        rs.getString(6));
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9));
             }
         } catch (Exception e) {
         }

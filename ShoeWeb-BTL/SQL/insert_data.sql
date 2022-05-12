@@ -127,3 +127,13 @@ DROP COLUMN `itemID`,
 ADD COLUMN `productID` INT NOT NULL AFTER `orderID`,
 ADD COLUMN `quantity` INT NOT NULL AFTER `productID`,
 ADD COLUMN `price` DOUBLE NOT NULL AFTER `quantity`;
+
+ALTER TABLE `shoeweb`.`product` 
+ADD COLUMN `quantity` INT NOT NULL AFTER `sell_ID`,
+CHANGE COLUMN `name` `name` VARCHAR(1000) NOT NULL ,
+CHANGE COLUMN `image` `image` VARCHAR(5000) NOT NULL ,
+CHANGE COLUMN `price` `price` DOUBLE NOT NULL ,
+CHANGE COLUMN `title` `title` VARCHAR(1000) NOT NULL ,
+CHANGE COLUMN `description` `description` VARCHAR(5000) NOT NULL ,
+CHANGE COLUMN `cateID` `cateID` INT NOT NULL ,
+CHANGE COLUMN `sell_ID` `sell_ID` INT NOT NULL ;

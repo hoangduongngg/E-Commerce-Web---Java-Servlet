@@ -15,18 +15,51 @@ public class Product {
     private double price;
     private String title;
     private String description;
-
+    private int quantity;
+    private int cateID;
+    private int sell_ID;
     public Product() {
     }
 
-    public Product(int id, String name, String image, double price, String title, String description) {
+    public Product(int id, String name, String image, double price, String title, String description, int quantity, int cateID, int sell_ID) {
         this.id = id;
         this.name = name;
         this.image = image;
         this.price = price;
         this.title = title;
         this.description = description;
+        this.quantity = quantity;
+        this.cateID = cateID;
+        this.sell_ID = sell_ID;
     }
+
+    public int getCateID() {
+        return cateID;
+    }
+
+    public int getSell_ID() {
+        return sell_ID;
+    }
+
+    public void setCateID(int cateID) {
+        this.cateID = cateID;
+    }
+
+    public void setSell_ID(int sell_ID) {
+        this.sell_ID = sell_ID;
+    }
+
+    
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    
 
     public int getId() {
         return id;

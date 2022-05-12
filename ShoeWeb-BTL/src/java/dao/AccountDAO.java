@@ -6,6 +6,8 @@ package dao;
 
 import context.DBContext;
 import entity.Account;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -73,7 +75,7 @@ public class AccountDAO extends DAO{
     }
     
     // Sign Up: Them Account moi vao Database
-    public void signUp (String user , String pass, String name, String address , String phone) {
+    public void signUp (String user , String pass, String name, String address , String phone)  {
         String query = "insert into account (user, pass, isSell, isAdmin, name, address, phone)\n" +
                         "values (?, ?, 0, 0, ?, ?, ?)"; //0,0 : not Seller, not Admin => Normal User
         try {
@@ -89,6 +91,63 @@ public class AccountDAO extends DAO{
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+    
+    public List<Account> getAllAccount()  {
+	List<Account> list = new ArrayList<>();
+	String query = "select * from account";
+	try {
+	    conn = new DBContext().getConnection();//mo ket noi voi sql
+	    ps = conn.prepareStatement(query);
+	    rs = ps.executeQuery();
+	    while (rs.next()) {
+		list.add(new Account(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8))
+                );
+	    }
+	} catch (Exception e) {
+	}
+	return list;
+    }
+    
+    public void update(Account account)  {
+        String user = account.getUser();
+        String pass = account.getPass();
+	String query = "update account set pass = '" + pass + "' where user = '" + user + "'";
+	try {
+	    conn = new DBContext().getConnection();//mo ket noi voi sql
+	    ps = conn.prepareStatement(query);
+
+//            rs = ps.executeQuery(); Khi chay cau lech tren khong co result tra ve, chi Update
+	    ps.executeUpdate();
+	} catch (Exception e) {
+	}
+    }
+    
+    public void delete(int id)  {
+	String query = "delete from account where uid = '" + id + "'";
+	try {
+	    conn = new DBContext().getConnection();//mo ket noi voi sql
+	    ps = conn.prepareStatement(query);
+//            rs = ps.executeQuery(); Khi chay cau lech tren khong co result tra ve, chi Update
+	    ps.executeUpdate();
+	} catch (Exception e) {
+	}
+    }
+
+    public Account getAccountbyId(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void signUp(Account account) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
