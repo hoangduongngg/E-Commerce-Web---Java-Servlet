@@ -157,3 +157,25 @@ UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '16');
 UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '17');
 UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '18');
 UPDATE `shoeweb`.`product` SET `quantity` = '50' WHERE (`id` = '19');
+
+ALTER TABLE `shoeweb`.`product` 
+ADD COLUMN `insertDate` DATE NOT NULL AFTER `quantity`;
+
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '1');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '2');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '3');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '4');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '5');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '6');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '7');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '8');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '9');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '10');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '11');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '12');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '13');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '14');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2020-05-10' WHERE (`id` = '15');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2020-05-10' WHERE (`id` = '16');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2020-05-10' WHERE (`id` = '17');
+UPDATE `shoeweb`.`product` SET `insertDate` = '2022-05-10' WHERE (`id` = '18');
