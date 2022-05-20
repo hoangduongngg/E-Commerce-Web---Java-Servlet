@@ -123,6 +123,8 @@
                                             <h5 class="font-weight-bold">${totalPayment}$</h5>
                                         </li>
                                     </ul><a href="buy" class="btn btn-dark rounded-pill py-2 btn-block">Confirm</a>
+                                    <br>
+                                    <!--</ul><a href="vnpay_index.jsp" class="btn btn-dark rounded-pill py-2 btn-block">Payment Online</a>-->
                                 </div>
                             </div>
                         </div>

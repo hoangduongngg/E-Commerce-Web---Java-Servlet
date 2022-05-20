@@ -47,6 +47,12 @@
                 width: 100% !important;
                 height: auto !important;
             }
+            .list-group{
+                display: none!important;
+            }
+            .list-group.active{
+                display: block!important;
+            }
         </style>
     </head>
     <body>
@@ -58,17 +64,17 @@
                     <div class="col-sm-3">
                      <!--Category List-->
                         <div class="card bg-light mb-3">
-                            <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
-                            <ul class="list-group category_block">
-                                <c:forEach items="${listC}" var="o">
-                                    <li class="list-group-item text-white 
-                                        ${cateTag == o.cid ? "active":""}"><!--Neu cateTag == cid thi hien mau nen la active , toan tu 3 ngoi-->
-                                        <a href="category?cid=${o.cid}">${o.cname}</a>
-                                    </li>
-                                </c:forEach>
+                        <div class="card-header bg-primary text-white text-uppercase" onclick="document.querySelector('.list-group').classList.toggle('active')"><i class="fa fa-list"></i> Categories</div>
+                        <ul class="list-group category_block">
+                            <c:forEach items="${listC}" var="o">
+                                <li class="list-group-item text-white 
+                                    ${cateTag == o.cid ? "active":""}"><!--Neu cateTag == cid thi hien mau nen la active , toan tu 3 ngoi-->
+                                    <a href="category?cid=${o.cid}">${o.cname}</a>
+                                </li>
+                            </c:forEach>
 
-                            </ul>
-                        </div> 
+                        </ul>
+                    </div>
 
                         
                     </div>
@@ -104,8 +110,8 @@
                                         </dl>
 
                                         <hr>
-                                        <a href="addtoCart?ProductID=${p.id}" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
-                                        <a href="addtoCart?ProductID=${p.id}" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+                                        <a href="addtoCart?ProductID=${p.id}" class="btn btn-sm btn-primary text-uppercase"> Buy now </a>
+                                        <a href="addtoCart?ProductID=${p.id}" class="btn btn-sm btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
                                     </article> <!-- card-body.// -->
                                 </aside> <!-- col.// -->
                             <!--</div>  row.//--> 

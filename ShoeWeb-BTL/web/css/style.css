@@ -73,3 +73,10 @@ footer a {
 a .active{
     color: white;
 }
+
+.list-group{
+    display: none;
+}
+.list-group.active{
+    display: block;
+}

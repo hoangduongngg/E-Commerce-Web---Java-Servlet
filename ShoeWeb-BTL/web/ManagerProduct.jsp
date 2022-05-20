@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+        <title>Product Manager</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,6 +14,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="css/manager.css" rel="stylesheet" type="text/css"/>
+        
         <style>
             img{
                 width: 200px;
@@ -30,7 +31,7 @@
                         </div>
                         <div class="col-sm-6">
                             <a href="#addProductModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-                            <a href="#deleteProductModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+                             <a href="home" class="btn btn-success">Home </a>					
                         </div>
                     </div>
                 </div>
@@ -60,7 +61,12 @@
                                     </span>
                                 </td>
                                 <td>${o.id}</td>
-                                <td>${o.name}</td>
+                                <c:if test="${o.calDate()<=365}">
+                                    <td>${o.name}</td>
+                                </c:if>
+                                <c:if test="${o.calDate()>365}">
+                                    <td>${o.name} <span style="color: red">(Hàng tồn)</span></td>
+                                </c:if>
                                 <td>
                                     <img src="${o.image}">
                                 </td>

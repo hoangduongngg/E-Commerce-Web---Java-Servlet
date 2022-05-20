@@ -17,7 +17,6 @@ public class Account {
     private String name;
     private String address;
     private String phone;
-
     public Account() {
     }
 

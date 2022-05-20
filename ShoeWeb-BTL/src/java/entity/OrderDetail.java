@@ -8,10 +8,40 @@ package entity;
  *
  * @author hoangduongngg
  */
-public class OrderDetail extends Item{
+public class OrderDetail {
+
     private int id;
     private int orderID;
     private int productID;
+    private int quantity;
+    private double price;
+
+    public OrderDetail() {
+    }
+
+    public OrderDetail(int id, int orderID, int productID, int quantity, double price) {
+        this.id = id;
+        this.orderID = orderID;
+        this.productID = productID;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
 
     public int getProductID() {
         return productID;
@@ -20,41 +50,21 @@ public class OrderDetail extends Item{
     public void setProductID(int productID) {
         this.productID = productID;
     }
-    
 
-    public OrderDetail() {
+    public int getQuantity() {
+        return quantity;
     }
 
-    public int getId() {
-        return id;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-   
-
-    public int getOrderID() {
-        return orderID;
+    public double getPrice() {
+        return price;
     }
 
-    
-
-    public void setId(int id) {
-        this.id = id;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    
-
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDetail{" + "id=" + id + ", orderID=" + orderID + '}';
-    }
-
-    
-
-   
-    
-    
 }

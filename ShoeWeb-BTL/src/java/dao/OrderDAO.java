@@ -6,20 +6,22 @@ package dao;
 
 import context.DBContext;
 import entity.Order;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author hoangduongngg
  */
-public class OrderDAO extends DAO{
+public class OrderDAO extends DAO {
 
     public OrderDAO() {
     }
-    
+
     // Luu Order moi vao Database
-    public void addOrder (Order order) {
-        String query = "insert into `shoeweb`.`order` (accountID, orderDate)\n" +   
-                        "values (?,?)";
+    public void addOrder(Order order) {
+        String query = "insert into `shoeweb`.`order` (accountID, orderDate)\n"
+                + "values (?,?)";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -31,7 +33,7 @@ public class OrderDAO extends DAO{
         } catch (Exception e) {
         }
     }
-    
+
     //Lay ra Order theo Date
     public Order getOrderbyDate(String orderDate) {
         String query = "select * from `shoeweb`.`order`\n"
@@ -41,15 +43,41 @@ public class OrderDAO extends DAO{
             ps = conn.prepareStatement(query);
             ps.setString(1, orderDate);
             rs = ps.executeQuery();
-            while(rs.next()){
-                return new Order (
+            while (rs.next()) {
+                return new Order(
                         rs.getInt(1),
                         rs.getInt(2),
                         rs.getString(3));
             }
         } catch (Exception e) {
         }
-        
+
         return null;
+    }
+
+//get all order
+    public List<Order> getAllOrder() {
+        List<Order> list = new ArrayList<>();
+
+        String query = "select * from `shoeweb`.`order`\n";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Order(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getString(3)));
+            }
+        } catch (Exception e) {
+        }
+
+        return list;
+    }
+
+    public static void main(String[] args) {
+        OrderDAO dAO = new OrderDAO();
+        System.out.println(dAO.getAllOrder());
     }
 }

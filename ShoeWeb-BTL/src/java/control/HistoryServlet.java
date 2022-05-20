@@ -4,11 +4,11 @@
  */
 package control;
 
-import dao.CategoryDAO;
-import dao.ProductDAObyKhanh;
-import entity.Product;
+import dao.HistoryDAO;
+import entity.History;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author khanh
  */
-@WebServlet(name = "EditProductController", urlPatterns = {"/edit-product"})
-public class EditProductController extends HttpServlet {
+@WebServlet(name = "HistoryServlet", urlPatterns = {"/history"})
+public class HistoryServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +34,12 @@ public class EditProductController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("id");
-
-        ProductDAObyKhanh dao = new ProductDAObyKhanh();
-        CategoryDAO catDao =new CategoryDAO();
-
-        Product product = dao.getProductById(id);
-        System.out.println(product.getName());
-        request.setAttribute("product", product);
-        request.setAttribute("listC", catDao.getAllCategory());
-        request.getRequestDispatcher("ManagerEditProduct.jsp").forward(request, response);
+        HistoryDAO dao = new HistoryDAO();
+        List<History> listHistorys = dao.getAllAccount();
+        request.setAttribute("listHistorys", listHistorys);
+        request.getRequestDispatcher("bill.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,8 +56,8 @@ public class EditProductController extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(EditProductController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(HistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -80,8 +74,8 @@ public class EditProductController extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(EditProductController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(HistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

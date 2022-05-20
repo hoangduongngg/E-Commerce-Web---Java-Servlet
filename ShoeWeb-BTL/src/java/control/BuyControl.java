@@ -6,6 +6,8 @@ package control;
 
 import dao.OrderDAO;
 import dao.OrderDetailDAO;
+import dao.ProductDAObyKhanh;
+import dao.HistoryDAO;
 import entity.Account;
 import entity.Cart;
 import entity.Item;
@@ -32,49 +34,47 @@ import javax.servlet.http.HttpSession;
 public class BuyControl extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException , ClassNotFoundException{
+            throws ServletException, IOException, ClassCastException, Exception{
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("account");
         Cart cart = (Cart) session.getAttribute("cart");
         if (account == null) {
             request.getRequestDispatcher("Login.jsp").forward(request, response);
-        }
-        else if (cart == null) {
+        } else if (cart == null) {
             request.getRequestDispatcher("cart").forward(request, response);
-        }
-        else {
+        } else {
 //                Add Order to Database
-                Order order = new Order();
-                order.setAccountID(account.getId());
-                
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-                String timeNow = LocalDateTime.now().toString();  
-                order.setOrderDate(timeNow);
-//                order.setTotalPayment(request.getAttribute("totalPayment"));
-                OrderDAO orderDAO = new OrderDAO();
-                orderDAO.addOrder(order);   
-                
+            Order order = new Order();
+            order.setAccountID(account.getId());
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            String timeNow = LocalDateTime.now().toString();
+            order.setOrderDate(timeNow);
+            OrderDAO orderDAO = new OrderDAO();
+            orderDAO.addOrder(order);
 //                Add OrderDetail to Database
-            List <Item> items = cart.getItems();
-            for (Item item: items) {
+            List<Item> items = cart.getItems();
+            for (Item item : items) {
                 OrderDetail orderDetail = new OrderDetail();
-                
                 orderDetail.setPrice(item.getPrice());
                 orderDetail.setProductID(item.getProduct().getId());
                 orderDetail.setQuantity(item.getQuantity());
                 orderDetail.setOrderID(orderDAO.getOrderbyDate(timeNow).getId());
-
                 OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
                 orderDetailDAO.addOrderDetail(orderDetail);
+                
+                String name = item.getProduct().getName();
+                int quantity = item.getQuantity();
+                double totalPrice = item.getPrice() * quantity;
+                HistoryDAO historyDAO = new HistoryDAO();
+                historyDAO.insert(timeNow, "" + account.getUser(), name, quantity, totalPrice);
+                ProductDAObyKhanh productDAObyKhanh = new ProductDAObyKhanh();
+                productDAObyKhanh.updateQuantity(item.getProduct().getId(), quantity);
             }
-            
             session.removeAttribute("cart");
             request.getRequestDispatcher("ConfirmBuy.jsp").forward(request, response);
         }
-
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -89,7 +89,7 @@ public class BuyControl extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(BuyControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -108,6 +108,8 @@ public class BuyControl extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BuyControl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(BuyControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

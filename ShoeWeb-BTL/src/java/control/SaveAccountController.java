@@ -46,11 +46,9 @@ public class SaveAccountController extends HttpServlet {
 	    // get all para
 	    String userName = request.getParameter("userName");
 	    String password = request.getParameter("password");
-	    String isAdmin = request.getParameter("isAdmin");
-	    String isSell = request.getParameter("isSell");
-            String name = "";
-            String address = "";
-            String phone = "";
+            String name = request.getParameter("name");
+            String address = request.getParameter("address");
+            String phone = request.getParameter("phone");
             
             
 	    //validate data:
@@ -70,8 +68,6 @@ public class SaveAccountController extends HttpServlet {
 		// tao 1 account tuong ung cac gia tri nhap
 		account.setUser(userName);
                 account.setPass(password);
-                account.setIsAdmin(Integer.parseInt(isAdmin));
-                account.setIsSell(Integer.parseInt(isSell));
                 account.setName(name);
                 account.setAddress(address);
                 account.setPhone(phone);

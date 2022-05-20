@@ -59,3 +59,13 @@ CREATE TABLE if not exists `shoeweb`.`orderdetail` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
+
+CREATE TABLE if not exists `shoeweb`.`history` (
+  `date` DATE NOT NULL,
+  `user` VARCHAR(45) NOT NULL,
+  `product` VARCHAR(45) NOT NULL,
+  `quantity` VARCHAR(45) NOT NULL,
+  `totalprice` VARCHAR(45) NOT NULL)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;

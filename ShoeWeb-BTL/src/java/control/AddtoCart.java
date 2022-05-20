@@ -80,7 +80,7 @@ public class AddtoCart extends HttpServlet {
                    
                     item.setProduct(product);
                     item.setQuantity(quantity);
-                    item.setPrice(product.getPrice());  // Neu co thay doi gia, khuyen mai,... thi thay doi tai day
+                    item.setPrice(product.getPrice()*quantity);  // Neu co thay doi gia, khuyen mai,... thi thay doi tai day
 
                     items.add(item);
                     cart.setItems(items);

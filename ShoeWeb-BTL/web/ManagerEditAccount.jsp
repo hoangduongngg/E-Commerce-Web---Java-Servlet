@@ -12,7 +12,7 @@
         <title>Edit User</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 	      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/managerAcount.css"/>
+	<link rel="stylesheet" href="css/managerAccount.css"/>
     </head>
     <body onload="myFunction()">
 	<div class="container">
@@ -47,41 +47,26 @@
 					<div class="valid-feedback">Password field is valid!</div>
 					<div class="invalid-feedback">Password field cannot be blank!</div>
 				    </div>
-
-<!--				    <div class="col-md-12">
-					<p>Is Admin:</p>
-					<div>
-					     Default inline 1
-					    <div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" class="custom-control-input" id="defaultInline1" name="isAdmin" value="1">
-						<label class="custom-control-label" for="defaultInline1">True</label>
-					    </div>
-
-					     Default inline 2
-					    <div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" class="custom-control-input" id="defaultInline2" name="isAdmin" value="0">
-						<label class="custom-control-label" for="defaultInline2">False</label>
-					    </div>
-					</div>
-
-				    </div>-->
-<!--				    <div class="col-md-12">
-					<p>Is Seller: </p>
-					<div>
-					     Default inline 1
-					    <div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" class="custom-control-input" id="defaultInline3" name="isSell" value="1">
-						<label class="custom-control-label" for="defaultInline3">True</label>
-					    </div>
-
-					     Default inline 2
-					    <div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" class="custom-control-input" id="defaultInline4" name="isSell" value="0">
-						<label class="custom-control-label" for="defaultInline4">False</label>
-					    </div>
-					</div>
-
-				    </div>-->
+                                               
+                                   <div class="col-md-12">
+					<input class="form-control" type="name" name="name" value="${password}"
+					       placeholder="Enter name" required />
+					<div class="valid-feedback">Password field is valid!</div>
+					<div class="invalid-feedback">Password field cannot be blank!</div>
+				    </div>
+                                               
+                                   <div class="col-md-12">
+					<input class="form-control" type="address" name="address" value="${password}"
+					       placeholder="Enter address" required />
+					<div class="valid-feedback">Password field is valid!</div>
+					<div class="invalid-feedback">Password field cannot be blank!</div>
+                                   </div>
+                                               <div class="col-md-12">
+					<input class="form-control" type="phone" name="phone" value="${password}"
+					       placeholder="Enter phone" required />
+					<div class="valid-feedback">Password field is valid!</div>
+					<div class="invalid-feedback">Password field cannot be blank!</div>
+				    </div>
 				    <div class="form-button mt-3">
 					<button id="submit" type="submit" class="btn btn-primary">Submit</button>
 					<a style="float: right" href="ManagerAccount" class="btn btn-primary">Back to user list</a>

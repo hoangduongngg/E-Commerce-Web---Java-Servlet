@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+        <title>Product Manager</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -60,10 +60,6 @@
                                         <option value="${o.cid}">${o.cname}</option>
                                     </c:forEach>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Sell ID</label>
-                                <input name="sellid" value="${product.sell_Id}" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Quantity</label>

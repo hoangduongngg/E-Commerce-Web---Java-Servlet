@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.util.Properties;
 import entity.Product;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 /**
  *
@@ -89,15 +91,17 @@ public class ProductDAObyKhanh {
             ResultSet res = statement.executeQuery(query);
             while (res.next()) {
                 Product product = new Product(
-                        Integer.parseInt(res.getString("id")), 
-                        res.getString("name"), 
+                        Integer.parseInt(res.getString("id")),
+                        res.getString("name"),
                         res.getString("image"),
-                        Double.parseDouble(res.getString("price")), 
-                        res.getString("title"), 
+                        Double.parseDouble(res.getString("price")),
+                        res.getString("title"),
                         res.getString("description"),
-                        Integer.parseInt(res.getString("cateId")), 
+                        Integer.parseInt(res.getString("cateId")),
                         Integer.parseInt(res.getString("sell_Id")),
-                        Integer.parseInt(res.getString("quantity")));
+                        Integer.parseInt(res.getString("quantity")),
+                        res.getString("date")
+                );
                 products.add(product);
             }
         } catch (SQLException e) {
@@ -106,7 +110,7 @@ public class ProductDAObyKhanh {
         return products;
     }
 
-    public Product getProductById(String id) throws Exception{
+    public Product getProductById(String id) throws Exception {
         Product product = new Product();
         try {
             Connection conn = new DBContext().getConnection();
@@ -121,20 +125,23 @@ public class ProductDAObyKhanh {
                 product.setQuantity(Integer.parseInt(res.getString("quantity")));
                 product.setDescription(res.getString("description"));
                 product.setPrice(Double.parseDouble(res.getString("price")));
+                product.setSell_ID(1);
+                product.setDate(res.getString("date"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println(product.getName());
         return product;
     }
 
-    
-
     public void insert(String name, String image, String price, String title, String description,
-            String cateID, String sell_ID, String quantity) throws Exception  {
+            String cateID, String sell_ID, String quantity) throws Exception {
+        Date d2 = new SimpleDateFormat("yyyy-MM-dd").parse(LocalDate.now().toString());
+        String date = new SimpleDateFormat("dd-MM-yyyy").format(d2);
         try {
             Connection conn = new DBContext().getConnection();
-            String query = "INSERT INTO product (name, image, price, title, description, cateID, sell_ID, quantity) "
+            String query = "INSERT INTO product (name, image, price, title, description, cateID, sell_ID, quantity, date) "
                     + "VALUES ("
                     + "'" + name + "', "
                     + "'" + image + "', "
@@ -143,7 +150,8 @@ public class ProductDAObyKhanh {
                     + "'" + description + "', "
                     + "'" + cateID + "', "
                     + "'" + sell_ID + "', "
-                    + "'" + quantity + "')";
+                    + "'" + quantity + "', "
+                    + "'" + date + "')";
             Statement statement = conn.createStatement();
             statement.executeUpdate(query);
         } catch (SQLException e) {
@@ -168,6 +176,8 @@ public class ProductDAObyKhanh {
 
     public void update(String productId, String name, String image, String price, String title, String description,
             String cateID, String sell_ID, String quantity) throws Exception {
+        Date d2 = new SimpleDateFormat("yyyy-MM-dd").parse(LocalDate.now().toString());
+        String date = new SimpleDateFormat("dd-MM-yyyy").format(d2);
         try {
             Connection conn = new DBContext().getConnection();
             String query = "UPDATE product SET name = '" + name + "', "
@@ -176,8 +186,20 @@ public class ProductDAObyKhanh {
                     + "title = '" + title + "', "
                     + "description = '" + description + "', "
                     + "cateID = '" + cateID + "', "
-                    + "sell_ID = '" + sell_ID + "', "
-                    + "quantity = '" + quantity + "' WHERE id = '" + productId + "'";
+                    + "sell_ID = '1', "
+                    + "quantity = '" + quantity + "', "
+                    + "date = '" + date + "' WHERE id = '" + productId + "'";
+            Statement statement = conn.createStatement();
+            statement.executeUpdate(query);
+        } catch (Exception e) {
+        }
+    }
+
+    public void updateQuantity(int productId, int quantity) throws Exception {
+        try {
+            Connection conn = new DBContext().getConnection();
+            String query = "UPDATE product SET quantity = quantity - " + quantity
+                    + " WHERE id = '" + productId + "'";
             Statement statement = conn.createStatement();
             statement.executeUpdate(query);
         } catch (Exception e) {

@@ -19,10 +19,13 @@
 
                         <c:if test="${sessionScope.account.isAdmin == 1}">
                             <li class="nav-item">
-                                <a class="nav-link" href="products">Product Manager</a>
+                                <a class="nav-link" href="products">Product</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="ManagerAccount">Account Manager</a>
+                                <a class="nav-link" href="ManagerAccount">Account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="history">History</a>
                             </li>
                         </c:if>
                         
@@ -33,7 +36,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="home">Hello ${sessionScope.account.user} </a>
-                            </li>-->
+                            </li>
                         </c:if>
                         <!--Neu chua dang nhap thi hien Login-->
                         <c:if test="${sessionScope.account == null}">

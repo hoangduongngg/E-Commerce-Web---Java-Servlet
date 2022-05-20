@@ -19,8 +19,9 @@
                 <jsp:include page="Navbar.jsp"></jsp:include>
     <section class="jumbotron text-center">
                 <div class="container">
-                    <h1 class="jumbotron-heading">Confirm!!!</h1>
-                    <a href="home" class="lead text-muted mb-0">More Shoe.</a>
+                    <h1 class="jumbotron-heading">Confirm!</h1>
+                    <!--<a href="home" class="lead text-muted mb-0">More Shoe.</a>-->
+                    </ul><a target = "_ blank"  href="http://sandbox.vnpayment.vn/tryitnow/Home/CreateOrder" class="btn btn-dark rounded-pill py-2 btn-block">Payment Online</a>
                 </div>
             </section>
         <jsp:include page="Footer.jsp"></jsp:include>

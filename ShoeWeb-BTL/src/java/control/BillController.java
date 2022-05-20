@@ -4,11 +4,16 @@
  */
 package control;
 
-import dao.CategoryDAO;
-import dao.ProductDAObyKhanh;
-import entity.Product;
+import dao.AccountDAO;
+import dao.OrderDAO;
+import dao.OrderDetailDAO;
+import entity.Account;
+import entity.Order;
+import entity.OrderDetail;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,8 +26,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author khanh
  */
-@WebServlet(name = "EditProductController", urlPatterns = {"/edit-product"})
-public class EditProductController extends HttpServlet {
+@WebServlet(name = "BillController", urlPatterns = {"/bill"})
+public class BillController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,16 +41,36 @@ public class EditProductController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("id");
 
-        ProductDAObyKhanh dao = new ProductDAObyKhanh();
-        CategoryDAO catDao =new CategoryDAO();
+        OrderDAO orderDAO = new OrderDAO();
+        List<Order> listOrder = orderDAO.getAllOrder();
 
-        Product product = dao.getProductById(id);
-        System.out.println(product.getName());
-        request.setAttribute("product", product);
-        request.setAttribute("listC", catDao.getAllCategory());
-        request.getRequestDispatcher("ManagerEditProduct.jsp").forward(request, response);
+        OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+        List<OrderDetail> listOrderDetail = orderDetailDAO.getAllOrderDetail();
+
+        List<Account> accounts = new ArrayList<>();
+        AccountDAO accountDAO = new AccountDAO();
+        for (Order o : listOrder) {
+            accounts.add(accountDAO.getAccountbyId(String.valueOf(o.getAccountID())));
+        }
+
+        List<String> totalPrice = new ArrayList<>();
+        DecimalFormat df = new DecimalFormat(",###");
+        for (Order o : listOrder) {
+            long total = 0;
+            for (OrderDetail od : listOrderDetail) {
+                if (o.getId() == od.getOrderID()) {
+                    total += od.getPrice();
+                }
+            }
+            totalPrice.add(df.format(total));
+        }
+        request.setAttribute("listOrder", listOrder);
+        request.setAttribute("listOrderDetail", listOrderDetail);
+        request.setAttribute("totalPrice", totalPrice);
+        request.setAttribute("accounts", accounts);
+
+        request.getRequestDispatcher("bill.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,7 +88,7 @@ public class EditProductController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(EditProductController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BillController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -81,7 +106,7 @@ public class EditProductController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(EditProductController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BillController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
